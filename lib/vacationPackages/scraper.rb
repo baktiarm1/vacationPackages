@@ -9,5 +9,4 @@ class Scraper
    price = doc.css(".pricePoints.extraLarge").first.css(".estPrice").text
  end 
 
-
 end 
