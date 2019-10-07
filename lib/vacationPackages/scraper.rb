@@ -1,6 +1,9 @@
 require 'pry'
-class VacationPackages::Scraper
-  
+require 'open-uri'
+require 'nokogiri'
+
+module VacationPackages
+class Scraper
   
    def get_page 
     Nokogiri::HTML(open("https://www.cheapcaribbean.com"))
@@ -12,5 +15,10 @@ class VacationPackages::Scraper
    price = doc.css(".pricePoints.extraLarge").first.css(".estPrice").text
  end 
  
+  end 
 end 
+
+pkg = VacationPackages::Scraper.new
+
+puts pkg.get_page
 
