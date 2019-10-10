@@ -10,7 +10,6 @@ module VacationPackages
       
    #end 
    
-   
-   
+  
   end 
 end 
