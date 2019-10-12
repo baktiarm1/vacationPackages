@@ -1,15 +1,17 @@
 module VacationPackages
   class Packages
-   attr_accessor :resort, :destination, :price 
+   attr_accessor :destination, :resort, :price 
    
    @@all =[]
-  
+   @@resorts =[]
+   @@prices = []
 
-  def initialize(destination, resort=nil, price=nil)  
+  def initialize(destination=nil, resort=nil, price=nil)  
     @destination = destination 
-    @resort=resort
+    
     @price=price
     @@all << self  
+    @@resorts << self
   end 
 
    

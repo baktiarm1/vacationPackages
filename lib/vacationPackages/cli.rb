@@ -42,21 +42,23 @@ module VacationPackages
     
     def print_resort(num)
       VacationPackages::Scraper.new.get_resorts
+      puts ''
       puts "You will be staying at the #{VacationPackages::Packages.all[num-1]}"
       puts ""
-      
       puts 'Would you like to know the total package price with airfare? Y/N'
       puts ""
         input = gets.strip
         if input == 'y'
-          print_price
+          print_price(num-1)
         else 
           good_bye
         end 
     end  
     
     def print_price(num)
-      puts 'This da price'
+       VacationPackages::Scraper.new.get_pkg_price
+       puts ''
+      puts "Total price with airfare is $#{VacationPackages::Packages.all[num-1]}"
     end 
 
   end 
