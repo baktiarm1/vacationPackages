@@ -1,7 +1,3 @@
-# require 'pry'
-# require 'open-uri'
-# require 'nokogiri'
-
 module VacationPackages
   class Scraper
     
@@ -11,11 +7,25 @@ module VacationPackages
      end
    
     
-     def make_packages
-      self.get_page.css("#deal_ResortUrl").children.each do |pkg|
-       VacationPackages::Packages.new
+     def get_destinations
+      self.get_page.css("#deal_DestinationUrl").children.each do |pkg|
+        VacationPackages::Packages.new(pkg)
+        end
       end
-     end 
+
+      def get_resorts
+        self.get_page.css("#deal_ResortUrl").children.each_with_index do |scrapedResort, index|
+        scrapedResort = scrapedResort.text
+        
+          VacationPackages::Packages.all[index] = scrapedResort
+          
+          end 
+      end 
+
+      def get_prices 
+      end 
+
+    
        
     # def get_deals
     #   resorts = self.get_page.css("#deal_ResortUrl").children
@@ -26,7 +36,5 @@ module VacationPackages
 
  end 
 end 
-# pkg = VacationPackages::Scraper.new
 
-# puts pkg.get_deals
 
