@@ -3,6 +3,20 @@
 # require 'nokogiri'
 module VacationPackages  
   class CLI 
+
+    def menu 
+      puts ''
+      puts "Would you like to see other destinations? Y/N"
+      puts ''
+
+      input = gets.strip.downcase
+      if input == 'y'
+        VacationPackages::Packages.clear
+        start
+      else
+        good_bye
+      end  
+    end 
     
     def call
       puts ''
@@ -35,6 +49,7 @@ module VacationPackages
     
     def print_destinations
       VacationPackages::Packages.all.each_with_index do |pkg, index|
+        #binding.pry
         puts "#{index+1}. #{pkg.destination}"
         puts ''
       end 
@@ -58,7 +73,10 @@ module VacationPackages
     def print_price(num)
        VacationPackages::Scraper.new.get_pkg_price
        puts ''
+       #puts "Total price with airfare is $#{VacationPackages::Packages.all[num-1]}"
       puts "Total price with airfare is $#{VacationPackages::Packages.all[num-1]}"
+      puts ''
+      menu 
     end 
 
   end 

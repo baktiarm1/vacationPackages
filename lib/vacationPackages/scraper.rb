@@ -16,7 +16,8 @@ module VacationPackages
       def get_resorts
         self.get_page.css("#deal_ResortUrl").children.each_with_index do |scrapedResort, index|
          scrapedResort = scrapedResort.text
-          #VacationPackages::Packages.resorts << scrapedResort
+         #binding.pry
+          #VacationPackages::Packages.all[index].resort = scrapedResort
           VacationPackages::Packages.all[index] = scrapedResort
           end 
       end 
@@ -27,13 +28,14 @@ module VacationPackages
         price = price.split('$')
         price.shift()
         price.each_with_index do |total_price, index|
-          #binding.pry
+         #VacationPackages::Packages.all[index].price = total_price
+
           VacationPackages::Packages.all[index] = total_price
         end 
 
       end 
 
-    
+  #dont exit at the end, give another prompt 
        
     # def get_deals
     #   resorts = self.get_page.css("#deal_ResortUrl").children

@@ -1,6 +1,7 @@
 module VacationPackages
   class Packages
    attr_accessor :destination, :resort, :price 
+   #macros^
    
    @@all =[]
    @@resorts =[]
@@ -8,10 +9,10 @@ module VacationPackages
 
   def initialize(destination=nil, resort=nil, price=nil)  
     @destination = destination 
-    
+    #instance var
     @price=price
+    @resort=resort
     @@all << self  
-    @@resorts << self
   end 
 
    
@@ -19,6 +20,9 @@ module VacationPackages
     @@all 
   end 
   
+  def self.clear 
+    @@all.clear
+  end 
   
   end 
 end 

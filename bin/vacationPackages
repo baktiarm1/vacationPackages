@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
+#shebang line ^
 
 require_relative '../lib/vacationPackages'
 
 VacationPackages::CLI.new.call
+#namespacing
